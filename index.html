@@ -663,23 +663,23 @@
     <div id="column-overlay" class="full-overlay hidden fixed inset-0 bg-white overflow-y-auto z-[100]">
         <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-6">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center relative h-8">
-                <button id="btn-back-col-list" onclick="backToColumnList()" class="hidden flex items-center text-xs uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-[#6B0D16] transition-colors z-20">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <!-- Back Button -->
+                <button id="btn-back-col-list" onclick="backToColumnList()" class="hidden flex items-center text-[10px] sm:text-xs uppercase tracking-widest sm:tracking-[0.2em] font-bold text-gray-400 hover:text-[#6B0D16] transition-colors z-20">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 sm:h-5 sm:w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    Back to List
+                    Back <span class="hidden sm:inline">&nbsp;to List</span>
                 </button>
                 
-                <!-- [수정됨 2, 3] 모바일에서 중앙 타이틀 숨김 (hidden md:block) -->
-                <!-- 모바일에서는 공간이 좁아 닫기 버튼과 겹치므로 아예 제거 -->
-                <span class="hidden md:block text-lg font-bold luxury-text text-[#6B0D16] mx-auto absolute left-0 right-0 text-center pointer-events-none">
+                <!-- Title -->
+                <span class="block text-xs sm:text-lg font-bold luxury-text text-[#6B0D16] mx-auto absolute left-0 right-0 text-center pointer-events-none">
                     Taurus Insights
                 </span>
                 
-                <!-- 닫기 버튼 -->
-                <button onclick="closeAllOverlays()" class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center text-xs uppercase tracking-[0.2em] font-bold hover:text-[#6B0D16] transition-colors z-20">
-                    <span class="mr-2">Close</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <!-- Close Button -->
+                <button onclick="closeAllOverlays()" class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center text-[10px] sm:text-xs uppercase tracking-widest sm:tracking-[0.2em] font-bold hover:text-[#6B0D16] transition-colors z-20">
+                    <span class="mr-1 sm:mr-2">Close</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
