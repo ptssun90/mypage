@@ -12,7 +12,11 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="황소 특허법률사무소">
     <meta property="og:description" content="아이디어에 정의를, 혁신에 가치를 더하다">
-    <meta property="og:image" content="./logo/share.png"> <meta property="og:url" content="https://www.taurusip.com">
+    <meta property="og:image" content="./logo/share.png"> 
+    <meta property="og:url" content="https://www.taurusip.com">
+    <!-- [수정됨 5] 공유 이미지 사이즈 명시 (이미지 잘림 방지용 권장 사이즈) -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
 
     <!-- [파비콘 설정] -->
@@ -692,7 +696,8 @@
     </main>
 
     <!-- [1] 전문가 상세 페이지 오버레이 -->
-    <div id="profile-detail-overlay" class="full-overlay hidden fixed inset-0 bg-white overflow-y-auto pt-28">
+    <!-- [수정됨 4-1] 상단 padding(pt-28) 제거하여 Sticky 메뉴가 최상단에 붙도록 수정 -->
+    <div id="profile-detail-overlay" class="full-overlay hidden fixed inset-0 bg-white overflow-y-auto">
         <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
                 <div id="sub-nav-list" class="flex flex-wrap gap-8 text-sm text-gray-400 font-medium uppercase tracking-widest">
@@ -707,7 +712,8 @@
             </div>
         </div>
 
-        <div class="flex flex-col pt-16 pb-20 px-6 max-w-7xl mx-auto animate-fade-in-up">
+        <!-- [수정됨 4-1] 대신 내용 영역에 padding 추가 (pt-28) -->
+        <div class="flex flex-col pt-28 pb-20 px-6 max-w-7xl mx-auto animate-fade-in-up">
             <div class="flex flex-col lg:flex-row gap-16 items-start">
                 <!-- [수정됨] 이미지 영역 확대: lg:w-1/3 -> lg:w-5/12 (약 41%) -->
                 <div class="w-full lg:w-5/12">
@@ -737,13 +743,13 @@
                         <!-- [수정됨] Contact 내용 폰트 확대 (text-lg) -->
                         <div class="space-y-2 font-sans text-lg text-gray-800">
                             <p class="flex items-center gap-4">
-                                <!-- [수정됨] Email -> E-MAIL, 너비 조정 -->
-                                <span class="w-16 uppercase text-sm font-bold text-black">E-MAIL</span>
+                                <!-- [수정됨 4-2] Email -> E-MAIL, 너비 조정 (w-16 -> w-20)으로 두 줄 깨짐 방지 -->
+                                <span class="w-20 uppercase text-sm font-bold text-black flex-shrink-0">E-MAIL</span>
                                 <span id="detail-email" class="hover:text-[#6B0D16] cursor-pointer">email@taurusip.com</span>
                             </p>
                             <p class="flex items-center gap-4">
-                                <!-- [수정됨] phone -> TEL, 너비 조정 -->
-                                <span class="w-16 uppercase text-sm font-bold text-black">TEL</span>
+                                <!-- [수정됨 4-2] phone -> TEL, 너비 조정 (w-16 -> w-20) -->
+                                <span class="w-20 uppercase text-sm font-bold text-black flex-shrink-0">TEL</span>
                                 <span id="detail-phone">02-123-4567</span>
                             </p>
                         </div>
@@ -779,17 +785,18 @@
     <!-- [2] 칼럼 전체보기 & 상세 오버레이 -->
     <div id="column-overlay" class="full-overlay hidden fixed inset-0 bg-white overflow-y-auto z-[100]">
         <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-6">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-                <button id="btn-back-col-list" onclick="backToColumnList()" class="hidden flex items-center text-xs uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-[#6B0D16] transition-colors">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center relative">
+                <button id="btn-back-col-list" onclick="backToColumnList()" class="hidden flex items-center text-xs uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-[#6B0D16] transition-colors z-10">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                     Back to List
                 </button>
-                <span class="text-lg font-bold luxury-text text-[#6B0D16] mx-auto absolute left-0 right-0 text-center pointer-events-none">
+                <!-- [수정됨 2, 3] 모바일(md 이하)에서 타이틀 숨김 처리하여 Close 버튼과 겹침 방지 (hidden md:block) -->
+                <span class="hidden md:block text-lg font-bold luxury-text text-[#6B0D16] mx-auto absolute left-0 right-0 text-center pointer-events-none">
                     Taurus Insights
                 </span>
-                <button onclick="closeAllOverlays()" class="ml-auto flex items-center text-xs uppercase tracking-[0.2em] font-bold hover:text-[#6B0D16] transition-colors">
+                <button onclick="closeAllOverlays()" class="ml-auto flex items-center text-xs uppercase tracking-[0.2em] font-bold hover:text-[#6B0D16] transition-colors z-10">
                     <span class="mr-2">Close</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
@@ -862,10 +869,21 @@
             <div class="flex flex-col md:flex-row justify-between items-start gap-16">
                 <div>
                     <h2 class="text-2xl font-bold tracking-widest burgundy-tint mb-8">황소 특허법률사무소</h2>
-                    <address class="not-italic text-xs text-gray-600 space-y-3 font-medium tracking-widest leading-loose">
-                        <p><span class="font-bold text-gray-900 w-24 inline-block">대표 변리사</span> 박태선 외 3인</p>
-                        <p><span class="font-bold text-gray-900 w-24 inline-block">주소</span> 서울특별시 강남구 테헤란로 123, 황소빌딩 15층</p>
-                        <p><span class="font-bold text-gray-900 w-24 inline-block">사업자등록번호</span> 123-45-67890</p>
+                    <!-- [수정됨 1] 주소 정렬을 위해 <p> 대신 flex div 구조 사용 -->
+                    <address class="not-italic text-xs text-gray-600 font-medium tracking-widest leading-loose">
+                        <div class="flex items-start mb-3">
+                             <span class="font-bold text-gray-900 w-24 flex-shrink-0">대표 변리사</span>
+                             <span>박태선 외 3인</span>
+                        </div>
+                        <div class="flex items-start mb-3">
+                             <span class="font-bold text-gray-900 w-24 flex-shrink-0">주소</span>
+                             <span>서울특별시 강남구 테헤란로 123, 황소빌딩 15층</span>
+                        </div>
+                        <div class="flex items-start mb-3">
+                             <span class="font-bold text-gray-900 w-24 flex-shrink-0">사업자등록번호</span>
+                             <span>123-45-67890</span>
+                        </div>
+                        
                         <div class="mt-6 pt-6 border-t border-gray-100 text-gray-500">
                             <p>T. 02-123-4567 | F. 02-123-4568</p>
                             <p>E. contact@taurusip.com</p>
