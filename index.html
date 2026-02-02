@@ -324,7 +324,6 @@
         <header class="relative h-screen flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 hero-bg"></div>
             <div class="relative z-10 text-center text-white px-4 max-w-5xl">
-                <!-- [수정됨 5] 모바일 로고 사이즈 확대 w-24 (PC는 w-28 유지) -->
                 <img src="./logo/logo.png" onerror="this.src='https://via.placeholder.com/150x150/ffffff/6B0D16?text=TAURUS'" alt="황소 특허법률사무소 로고" class="w-24 md:w-28 h-auto mx-auto mb-10 logo-shadow" />
                 
                 <h2 class="hero-subtitle uppercase mb-8 opacity-90 font-light font-sans text-red-50 text-shadow-strong">The Standard of Justice & Innovation</h2>
@@ -659,27 +658,38 @@
         </div>
     </div>
 
-    <!-- [2] 칼럼 상세 오버레이 (모바일 겹침 해결) -->
+    <!-- [2] 칼럼 상세 오버레이 (모바일 겹침 해결 & 타이틀 복구) -->
     <div id="column-overlay" class="full-overlay hidden fixed inset-0 bg-white overflow-y-auto z-[100]">
-        <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-6">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center relative h-8">
+        <!-- [수정됨] 패딩 축소 (py-6 -> py-4)로 공간 확보 -->
+        <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center relative h-10">
                 <!-- Back Button -->
-                <button id="btn-back-col-list" onclick="backToColumnList()" class="hidden flex items-center text-[10px] sm:text-xs uppercase tracking-widest sm:tracking-[0.2em] font-bold text-gray-400 hover:text-[#6B0D16] transition-colors z-20">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 sm:h-5 sm:w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <!-- [수정됨] 모바일에서 텍스트 축소 (text-[9px]) 및 "to List" 숨김, z-index 20으로 타이틀 위로 배치 -->
+                <button id="btn-back-col-list" onclick="backToColumnList()" class="hidden flex items-center group z-20">
+                    <!-- 아이콘 크기 축소 (w-4 h-4) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-gray-400 group-hover:text-[#6B0D16] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    Back <span class="hidden sm:inline">&nbsp;to List</span>
+                    <span class="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#6B0D16] transition-colors whitespace-nowrap">
+                        Back <span class="hidden sm:inline">to List</span>
+                    </span>
                 </button>
                 
                 <!-- Title -->
-                <span class="block text-xs sm:text-lg font-bold luxury-text text-[#6B0D16] mx-auto absolute left-0 right-0 text-center pointer-events-none">
-                    Taurus Insights
-                </span>
+                <!-- [수정됨] 타이틀 복구 (hidden 제거), 폰트 크기 10px로 축소, 절대 중앙 정렬(inset-0), 안전 패딩(px-14) -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-14 sm:px-0">
+                    <span class="text-[10px] sm:text-lg font-bold luxury-text text-[#6B0D16] text-center leading-none">
+                        TAURUS INSIGHTS
+                    </span>
+                </div>
                 
                 <!-- Close Button -->
-                <button onclick="closeAllOverlays()" class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center text-[10px] sm:text-xs uppercase tracking-widest sm:tracking-[0.2em] font-bold hover:text-[#6B0D16] transition-colors z-20">
-                    <span class="mr-1 sm:mr-2">Close</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <!-- [수정됨] 모바일에서 텍스트 축소 (text-[9px]), z-index 20 -->
+                <button onclick="closeAllOverlays()" class="ml-auto flex items-center group z-20">
+                    <span class="mr-1 text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#6B0D16] transition-colors whitespace-nowrap">
+                        Close
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 group-hover:text-[#6B0D16] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
