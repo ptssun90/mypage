@@ -194,6 +194,8 @@
             position: relative;
             cursor: pointer;
             padding-bottom: 2px;
+            white-space: nowrap; /* 서브메뉴 줄바꿈 방지 */
+            flex-shrink: 0; /* flex container 안에서 줄어들지 않도록 */
         }
         .sub-nav-link.active {
             color: var(--burgundy);
@@ -207,6 +209,16 @@
             bottom: 0;
             left: 0;
             background-color: var(--burgundy);
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 
         .admin-modal {
@@ -301,10 +313,10 @@
             <div class="flex justify-between items-center h-28">
                 <a href="#" class="group flex flex-col justify-center h-full" onclick="closeAllOverlays()">
                     <div class="flex flex-col leading-none text-center sm:text-left w-fit mx-auto sm:mx-0">
-                        <span class="block text-2xl font-bold burgundy-tint tracking-widest group-hover:opacity-80 transition-opacity whitespace-nowrap">
+                        <span class="block text-lg sm:text-2xl font-bold burgundy-tint tracking-widest group-hover:opacity-80 transition-opacity whitespace-nowrap">
                             황소 특허법률사무소
                         </span>
-                        <span class="block w-full text-[0.94rem] font-medium burgundy-tint tracking-[0.16em] mt-1 uppercase opacity-90 group-hover:opacity-70 transition-opacity">
+                        <span class="block w-full text-[0.8rem] sm:text-[0.94rem] font-medium burgundy-tint tracking-[0.16em] mt-1 uppercase opacity-90 group-hover:opacity-70 transition-opacity">
                             Taurus IP Law Firm
                         </span>
                     </div>
@@ -337,13 +349,13 @@
 
                 <div class="md:hidden flex items-center">
                      <!-- Mobile Lang Switcher -->
-                     <div class="flex items-center mr-6">
+                     <div class="flex items-center mr-4">
                         <button onclick="switchLanguage('kr')" class="lang-switch-btn active" id="btn-kr-m">KR</button>
                         <span class="lang-divider">|</span>
                         <button onclick="switchLanguage('us')" class="lang-switch-btn hover:text-[#6B0D16]" id="btn-us-m">US</button>
                     </div>
                     <button id="mobile-menu-btn" class="p-2" onclick="toggleMobileMenu()">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 8h16M4 16h16" />
                         </svg>
                     </button>
@@ -408,7 +420,8 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-gray-100 pb-12">
                     <div>
                         <h3 class="text-xs burgundy-tint uppercase tracking-[0.5em] mb-4 font-bold">Our Expertise</h3>
-                        <h2 class="text-4xl font-bold luxury-text uppercase">전문분야</h2>
+                        <!-- 모바일 제목 한줄 처리 및 폰트 조정 -->
+                        <h2 class="text-2xl md:text-4xl font-bold luxury-text uppercase whitespace-nowrap">전문분야</h2>
                     </div>
                     <p class="mt-4 md:mt-0 text-gray-900 text-sm font-medium max-w-md leading-relaxed">
                         황소 특허법률사무소는 각 분야별 고도의 전문성을 보유한 변리사들이 고객의 지식재산을 완벽하게 보호합니다.
@@ -472,7 +485,8 @@
                 <div class="max-w-7xl mx-auto px-6 lg:px-12">
                     <div class="mb-24">
                         <h3 class="text-xs burgundy-tint uppercase tracking-[0.5em] mb-4 font-bold">Our Professionals</h3>
-                        <h2 class="text-4xl font-bold luxury-text">최고의 전문 인력</h2>
+                        <!-- 모바일 제목 한줄 처리 및 폰트 조정 -->
+                        <h2 class="text-2xl md:text-4xl font-bold luxury-text whitespace-nowrap">최고의 전문 인력</h2>
                     </div>
                     <!-- Container for JS Injection (KR) -->
                     <div id="professionals-grid-kr" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
@@ -485,7 +499,7 @@
             <section id="columns" class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="text-center mb-28">
                     <h3 class="text-xs burgundy-tint uppercase tracking-[0.5em] mb-4 font-bold">Insights</h3>
-                    <h2 class="text-4xl font-bold luxury-text uppercase mb-8">인사이트 칼럼</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold luxury-text uppercase mb-8 whitespace-nowrap">인사이트 칼럼</h2>
                     <div class="w-12 h-[1px] bg-[#6B0D16] mx-auto"></div>
                 </div>
 
@@ -506,7 +520,7 @@
                 <div class="max-w-7xl mx-auto px-6 lg:px-12">
                     <div class="text-center mb-16">
                         <h3 class="text-xs burgundy-tint uppercase tracking-[0.5em] mb-4 font-bold">Contact Us</h3>
-                        <h2 class="text-4xl font-bold luxury-text uppercase mb-6 text-black">온라인 문의하기</h2>
+                        <h2 class="text-2xl md:text-4xl font-bold luxury-text uppercase mb-6 text-black whitespace-nowrap">온라인 문의하기</h2>
                         <p class="text-gray-500 font-light leading-relaxed">
                             전문 변리사가 귀하의 사건을 직접 검토하고 24시간 이내에 회신 드립니다.
                         </p>
@@ -703,9 +717,10 @@
                     
                     <h2 class="hero-subtitle uppercase mb-8 opacity-90 font-light font-sans text-red-50 text-shadow-strong">The Standard of Justice & Innovation</h2>
                     
-                    <h1 class="hero-title font-light mb-10 luxury-text text-shadow-soft">
-                        Adding <span class="text-[#6B0D16] font-normal">Justice</span> to Ideas,<br>
-                        <span class="text-[#6B0D16] font-normal">Value</span> to Innovation
+                    <!-- 영문 히어로 텍스트 모바일/PC 줄바꿈 수정 + 크기 대폭 축소 -->
+                    <h1 class="font-light mb-10 luxury-text text-shadow-soft text-[1.4rem] sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+                        <span class="block whitespace-nowrap w-full text-center">ADDING <span class="text-[#6B0D16] font-normal">JUSTICE</span> TO IDEAS,</span>
+                        <span class="block whitespace-nowrap w-full text-center"><span class="text-[#6B0D16] font-normal">VALUE</span> TO INNOVATION</span>
                     </h1>
                     
                     <div class="w-24 h-[1px] bg-red-200/50 mx-auto mb-10"></div>
@@ -730,7 +745,8 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-gray-100 pb-12">
                     <div>
                         <h3 class="text-xs burgundy-tint uppercase tracking-[0.5em] mb-4 font-bold">Our Expertise</h3>
-                        <h2 class="text-4xl font-bold luxury-text uppercase">Our Expertise</h2>
+                        <!-- 모바일 제목 한줄 처리 및 폰트 조정 -->
+                        <h2 class="text-2xl md:text-4xl font-bold luxury-text uppercase whitespace-nowrap">Our Expertise</h2>
                     </div>
                     <p class="mt-4 md:mt-0 text-gray-900 text-sm font-medium max-w-md leading-relaxed">
                         Taurus IP Law Firm provides perfect protection for your intellectual property through attorneys with high-level expertise in each field.
@@ -794,7 +810,8 @@
                 <div class="max-w-7xl mx-auto px-6 lg:px-12">
                     <div class="mb-24">
                         <h3 class="text-xs burgundy-tint uppercase tracking-[0.5em] mb-4 font-bold">Our Professionals</h3>
-                        <h2 class="text-4xl font-bold luxury-text">Our Professionals</h2>
+                        <!-- 모바일 제목 한줄 처리 및 폰트 조정 -->
+                        <h2 class="text-2xl md:text-4xl font-bold luxury-text whitespace-nowrap">Our Professionals</h2>
                     </div>
                     <!-- Container for JS Injection (US) -->
                     <div id="professionals-grid-us" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
@@ -808,7 +825,7 @@
                 <div class="max-w-7xl mx-auto px-6 lg:px-12">
                     <div class="text-center mb-16">
                         <h3 class="text-xs burgundy-tint uppercase tracking-[0.5em] mb-4 font-bold">Contact Us</h3>
-                        <h2 class="text-4xl font-bold luxury-text uppercase mb-6 text-black">Office Information</h2>
+                        <h2 class="text-2xl md:text-4xl font-bold luxury-text uppercase mb-6 text-black whitespace-nowrap">Office Information</h2>
                     </div>
 
                     <!-- Only Office Info for US -->
@@ -882,11 +899,11 @@
     <div id="profile-detail-overlay" class="full-overlay hidden fixed inset-0 bg-white overflow-y-auto z-[100]">
         <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center relative">
-                <!-- 서브메뉴 리스트 -->
-                <div id="sub-nav-list" class="flex flex-wrap gap-x-4 sm:gap-x-8 gap-y-2 text-[10px] sm:text-sm text-gray-400 font-medium uppercase tracking-widest pr-8 sm:pr-16">
+                <!-- 서브메뉴 리스트 : 한 줄로 표시 및 가로 스크롤 추가 -->
+                <div id="sub-nav-list" class="flex flex-nowrap overflow-x-auto no-scrollbar gap-x-6 sm:gap-x-8 gap-y-2 text-[10px] sm:text-sm text-gray-400 font-medium uppercase tracking-widest pr-8 sm:pr-16 w-full mask-linear">
                     <!-- JS Generated -->
                 </div>
-                <button onclick="closeAllOverlays()" class="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 flex items-center text-xs uppercase tracking-[0.2em] font-bold hover:text-[#6B0D16] transition-colors z-20">
+                <button onclick="closeAllOverlays()" class="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 flex items-center text-xs uppercase tracking-[0.2em] font-bold hover:text-[#6B0D16] transition-colors z-20 bg-white pl-4">
                     <span class="mr-2">Close</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
@@ -1098,8 +1115,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="mt-24 pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-end md:items-center gap-4 text-[11px] text-gray-500 uppercase tracking-widest">
-                <p>
+            <!-- 카피라이트 한줄 처리 (whitespace-nowrap) -->
+            <div class="mt-24 pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-end md:items-center gap-4 text-[10px] sm:text-[11px] text-gray-500 uppercase tracking-normal sm:tracking-widest">
+                <p class="whitespace-nowrap">
                     © 2026 Taurus IP Law Firm. All Rights Reserved.
                 </p>
                 <p>Designed for Excellence</p>
@@ -1425,6 +1443,7 @@
                     `;
                 } else {
                      // US Layout (similar but English text)
+                     // [PC 화면 이름 두줄 현상 제거] whitespace-nowrap 추가
                      cardHTML = `
                         <div class="flex flex-col sm:flex-row gap-12 items-start">
                             <div class="w-full sm:w-64 aspect-[4/5] overflow-hidden transition-all duration-1000 bg-gray-200">
@@ -1434,7 +1453,7 @@
                                 <div class="mb-4 flex items-baseline">
                                     <span class="text-sm font-bold text-black mr-2">${labelText}</span>
                                 </div>
-                                <h4 class="text-3xl font-light mb-2 text-black"><span class="font-bold">${person.engName}</span></h4>
+                                <h4 class="text-2xl lg:text-3xl font-light mb-2 text-black whitespace-nowrap"><span class="font-bold">${person.engName}</span></h4>
                                 <div class="w-10 h-[1px] bg-gray-200 my-6"></div>
                                 <ul class="text-sm text-gray-800 space-y-3 font-medium leading-relaxed mb-8">
                                     ${displayDesc.map(item => `<li>• ${item}</li>`).join('')}
