@@ -1609,7 +1609,7 @@
                                 </ul>
                                 <div class="flex flex-col gap-1 mt-auto">
                                     <div class="text-sm text-gray-600 font-sans"><span class="text-xs font-bold text-gray-400 mr-2">E.</span>${person.email}</div>
-                                    <div class="text-sm text-gray-600 font-sans"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>+82-2-${person.phone.substring(3)}</div>
+                                    <div class="text-sm text-gray-600 font-sans"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>+82-${person.phone.substring(3)}</div>
                                 </div>
                             </div>
                         </div>
@@ -1825,4 +1825,5 @@
         window.addEventListener('load', init);
     </script>
 </body>
+
 </html>
