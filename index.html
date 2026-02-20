@@ -1609,7 +1609,7 @@
                                 </ul>
                                 <div class="flex flex-col gap-1 mt-auto">
                                     <div class="text-sm text-gray-600 font-sans"><span class="text-xs font-bold text-gray-400 mr-2">E.</span>${person.email}</div>
-                                    <div class="text-sm text-gray-600 font-sans"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>+82-${person.phone.substring(3)}</div>
+                                    <div class="text-sm text-gray-600 font-sans"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>+82-${person.phone.substring(1)}</div>
                                 </div>
                             </div>
                         </div>
@@ -1697,7 +1697,7 @@
                 document.getElementById('detail-name').innerText = person.engName; // Main name is Eng
                 document.getElementById('detail-eng-name').innerText = ""; // Hide sub name or put Korean? Let's hide
                 document.getElementById('detail-title').innerText = person.title;
-                document.getElementById('detail-phone').innerText = "+82-2-" + person.phone.substring(3);
+                document.getElementById('detail-phone').innerText = "+82-" + person.phone.substring(1);
 
                 document.getElementById('detail-education').innerHTML = (person.educationEn || []).map(item =>
                     `<li class="relative pl-5 before:content-['•'] before:absolute before:left-0 before:text-gray-400 text-sm font-bold text-black leading-7">${item}</li>`
@@ -1825,5 +1825,4 @@
         window.addEventListener('load', init);
     </script>
 </body>
-
 </html>
