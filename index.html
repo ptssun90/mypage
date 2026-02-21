@@ -304,46 +304,46 @@
             color: #e5e7eb;
         }
 
-/* 카드 외곽선 및 크기 조정 */
-.profile-card {
-    position: relative;
-    border: 1px solid #e5e7eb; 
-    padding: 2rem; /* 텍스트 공간 확보를 위해 패딩을 2.5rem -> 2rem으로 축소 */
-    background: white;
-    transition: all 0.5s ease;
-    display: flex;
-    flex-direction: column;
-}
+        /* 카드 외곽선 및 크기 조정 */
+        .profile-card {
+            position: relative;
+            border: 1px solid #e5e7eb; 
+            padding: 2rem; /* 텍스트 공간 확보를 위해 패딩을 2.5rem -> 2rem으로 축소 */
+            background: white;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
 
-.profile-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--burgundy); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
+        .profile-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--burgundy); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
 
-/* 디테일 버튼 위치 조정 */
-.detail-trigger-btn {
-    position: absolute;
-    right: 2rem; 
-    bottom: 2rem; 
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--burgundy);
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-}
+        /* 디테일 버튼 위치 조정 */
+        .detail-trigger-btn {
+            position: absolute;
+            right: 2rem; 
+            bottom: 2rem; 
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+        }
 
-.detail-trigger-btn::after {
-    content: '→';
-    margin-left: 0.5rem;
-    transition: transform 0.3s ease;
-}
+        .detail-trigger-btn::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
 
-.profile-card:hover .detail-trigger-btn::after {
-    transform: translateX(5px);
-}
+        .profile-card:hover .detail-trigger-btn::after {
+            transform: translateX(5px);
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -1106,7 +1106,7 @@
                     <address class="lang-content lang-kr not-italic text-xs text-gray-600 font-medium tracking-widest leading-loose">
                         <div class="flex items-start mb-3">
                              <span class="font-bold text-gray-900 w-24 flex-shrink-0">대표 변리사</span>
-                             <span>박태선 외 3인</span>
+                             <span>김동한 · 박태선 · 이동근 · 이명우</span>
                         </div>
                         <div class="flex items-start mb-3">
                              <span class="font-bold text-gray-900 w-24 flex-shrink-0 block">주소</span>
@@ -1116,25 +1116,21 @@
                              <span class="font-bold text-gray-900 w-24 flex-shrink-0">사업자등록번호</span>
                              <span>123-45-67890</span>
                         </div>
-                        <div class="mt-6 pt-6 border-t border-gray-100 text-gray-500">
-                            <p>T. 02-123-4567 | F. 02-123-4568</p>
-                            <p>E. contact@taurusip.com</p>
-                        </div>
                     </address>
 
                     <!-- US Address -->
-                     <address class="lang-content lang-us hidden not-italic text-xs text-gray-600 font-medium tracking-widest leading-loose">
+                    <address class="lang-content lang-us hidden not-italic text-xs text-gray-600 font-medium tracking-widest leading-loose">
                         <div class="flex items-start mb-3">
-                             <span class="font-bold text-gray-900 w-24 flex-shrink-0">Managing Partners</span>
-                             <span>Tae Sun, PARK et al.</span>
+                             <span class="font-bold text-gray-900 text-[10px] w-36 flex-shrink-0">Managing Partners</span>
+                             <span>Kim · Park · Lee & Lee</span>
                         </div>
                         <div class="flex items-start mb-3">
-                             <span class="font-bold text-gray-900 w-24 flex-shrink-0 block">Address</span>
+                             <span class="font-bold text-gray-900 text-[10px] w-36 flex-shrink-0 block">Address</span>
                              <span class="flex-1 break-keep">15F Taurus Building, 123 Teheran-ro, Gangnam-gu, Seoul, Korea</span>
                         </div>
-                        <div class="mt-6 pt-6 border-t border-gray-100 text-gray-500">
-                            <p>T. +82-2-123-4567 | F. +82-2-123-4568</p>
-                            <p>E. contact@taurusip.com</p>
+                        <div class="flex items-start mb-3">
+                             <span class="font-bold text-gray-900 text-[10px] w-36 flex-shrink-0 block">Biz Reg No.</span>
+                             <span>123-45-67890</span>
                         </div>
                     </address>
 
@@ -1582,81 +1578,81 @@
             }
         }
 
-function renderProfessionals() {
-    const containerId = currentLang === 'kr' ? 'professionals-grid-kr' : 'professionals-grid-us';
-    const container = document.getElementById(containerId);
-    if(!container) return;
+        function renderProfessionals() {
+            const containerId = currentLang === 'kr' ? 'professionals-grid-kr' : 'professionals-grid-us';
+            const container = document.getElementById(containerId);
+            if(!container) return;
 
-    container.innerHTML = ''; 
+            container.innerHTML = ''; 
     
-    professionalsData.forEach(person => {
-        const card = document.createElement('a');
-        card.href = `#${person.id}`; 
-        card.className = "profile-card block group cursor-pointer"; 
-        card.onclick = (e) => { e.preventDefault(); openProfileDetail(person.id, true); };
+            professionalsData.forEach(person => {
+                const card = document.createElement('a');
+                card.href = `#${person.id}`; 
+                card.className = "profile-card block group cursor-pointer"; 
+                card.onclick = (e) => { e.preventDefault(); openProfileDetail(person.id, true); };
         
-        const labelText = currentLang === 'kr' ? "대표 변리사" : "Managing Partner";
-        const displayDesc = currentLang === 'kr' ? person.desc : person.descEn;
-        const detailBtnText = currentLang === 'kr' ? "자세히 보기" : "DETAIL";
+                const labelText = currentLang === 'kr' ? "대표 변리사" : "Managing Partner";
+                const displayDesc = currentLang === 'kr' ? person.desc : person.descEn;
+                const detailBtnText = currentLang === 'kr' ? "자세히 보기" : "DETAIL";
 
-        let cardHTML = '';
+                let cardHTML = '';
 
-        if (currentLang === 'kr') {
-            cardHTML = `
-                <div class="flex flex-col sm:flex-row gap-8 items-start mb-10 h-full">
-                    <div class="w-full sm:w-48 shrink-0 aspect-[4/5] overflow-hidden bg-gray-200">
-                        <img src="${person.imgCard}" alt="${person.name}" class="w-full h-full object-cover">
-                    </div>
-                    <div class="pt-1 flex flex-col flex-1 min-w-0">
-                        <div class="mb-3 flex flex-wrap items-baseline gap-2">
-                            <span class="text-sm font-bold text-black whitespace-nowrap">${labelText}</span>
-                            <span class="text-[10px] text-[#6B0D16] font-semibold uppercase tracking-widest whitespace-nowrap">${person.title}</span>
+                if (currentLang === 'kr') {
+                    cardHTML = `
+                        <div class="flex flex-col sm:flex-row gap-8 items-start mb-10 h-full">
+                            <div class="w-full sm:w-48 shrink-0 aspect-[4/5] overflow-hidden bg-gray-200">
+                                <img src="${person.imgCard}" alt="${person.name}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="pt-1 flex flex-col flex-1 min-w-0">
+                                <div class="mb-3 flex flex-wrap items-baseline gap-2">
+                                    <span class="text-sm font-bold text-black whitespace-nowrap">${labelText}</span>
+                                    <span class="text-[10px] text-[#6B0D16] font-semibold uppercase tracking-widest whitespace-nowrap">${person.title}</span>
+                                </div>
+                                <h4 class="text-3xl font-light mb-2 text-black flex items-end flex-wrap gap-2">
+                                    <span class="font-bold whitespace-nowrap">${person.name}</span> 
+                                    <span class="text-sm text-black font-normal whitespace-nowrap">${person.engName}</span>
+                                </h4>
+                                <div class="w-10 h-[1px] bg-gray-200 my-4"></div>
+                                <ul class="text-sm text-gray-800 space-y-2 font-medium leading-relaxed break-keep mb-6">
+                                    ${displayDesc.map(item => `<li>• ${item}</li>`).join('')}
+                                </ul>
+                                <div class="flex flex-col gap-1">
+                                    <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">E.</span>${person.email}</div>
+                                    <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>${person.phone}</div>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="text-3xl font-light mb-2 text-black flex items-end flex-wrap gap-2">
-                            <span class="font-bold whitespace-nowrap">${person.name}</span> 
-                            <span class="text-sm text-black font-normal whitespace-nowrap">${person.engName}</span>
-                        </h4>
-                        <div class="w-10 h-[1px] bg-gray-200 my-4"></div>
-                        <ul class="text-sm text-gray-800 space-y-2 font-medium leading-relaxed break-keep mb-6">
-                            ${displayDesc.map(item => `<li>• ${item}</li>`).join('')}
-                        </ul>
-                        <div class="flex flex-col gap-1">
-                            <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">E.</span>${person.email}</div>
-                            <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>${person.phone}</div>
+                        <div class="detail-trigger-btn">${detailBtnText}</div>
+                    `;
+                } else {
+                    cardHTML = `
+                        <div class="flex flex-col sm:flex-row gap-8 items-start mb-10 h-full">
+                            <div class="w-full sm:w-48 shrink-0 aspect-[4/5] overflow-hidden bg-gray-200">
+                                <img src="${person.imgCard}" alt="${person.name}" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="pt-1 flex flex-col flex-1 min-w-0">
+                                <div class="mb-3 flex items-baseline">
+                                    <span class="text-sm font-bold text-black mr-2 whitespace-nowrap">${labelText}</span>
+                                </div>
+                                <h4 class="text-2xl lg:text-3xl font-light mb-2 text-black whitespace-nowrap"><span class="font-bold">${person.engName}</span></h4>
+                                <div class="w-10 h-[1px] bg-gray-200 my-4"></div>
+                                <ul class="text-sm text-gray-800 space-y-2 font-medium leading-relaxed mb-6">
+                                    ${displayDesc.map(item => `<li>• ${item}</li>`).join('')}
+                                </ul>
+                                <div class="flex flex-col gap-1">
+                                    <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">E.</span>${person.email}</div>
+                                    <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>+82-${person.phone.substring(1)}</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="detail-trigger-btn">${detailBtnText}</div>
-            `;
-        } else {
-            cardHTML = `
-                <div class="flex flex-col sm:flex-row gap-8 items-start mb-10 h-full">
-                    <div class="w-full sm:w-48 shrink-0 aspect-[4/5] overflow-hidden bg-gray-200">
-                        <img src="${person.imgCard}" alt="${person.name}" class="w-full h-full object-cover object-top">
-                    </div>
-                    <div class="pt-1 flex flex-col flex-1 min-w-0">
-                        <div class="mb-3 flex items-baseline">
-                            <span class="text-sm font-bold text-black mr-2 whitespace-nowrap">${labelText}</span>
-                        </div>
-                        <h4 class="text-2xl lg:text-3xl font-light mb-2 text-black whitespace-nowrap"><span class="font-bold">${person.engName}</span></h4>
-                        <div class="w-10 h-[1px] bg-gray-200 my-4"></div>
-                        <ul class="text-sm text-gray-800 space-y-2 font-medium leading-relaxed mb-6">
-                            ${displayDesc.map(item => `<li>• ${item}</li>`).join('')}
-                        </ul>
-                        <div class="flex flex-col gap-1">
-                            <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">E.</span>${person.email}</div>
-                            <div class="text-[13px] text-gray-600 font-sans truncate"><span class="text-xs font-bold text-gray-400 mr-2">T.</span>+82-${person.phone.substring(1)}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="detail-trigger-btn">${detailBtnText}</div>
-            `;
+                        <div class="detail-trigger-btn">${detailBtnText}</div>
+                    `;
+                }
+                
+                card.innerHTML = cardHTML;
+                container.appendChild(card);
+            });
         }
-        
-        card.innerHTML = cardHTML;
-        container.appendChild(card);
-    });
-}
 
         function renderLatestColumns() {
             const container = document.getElementById('latest-columns-grid');
